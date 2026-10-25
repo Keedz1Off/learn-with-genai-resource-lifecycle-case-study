@@ -1,0 +1,157 @@
+{
+  "format": "Curated summary of recorded local measurements; not a raw execution log",
+  "project": "vandenn/learn-with-genai",
+  "source": {
+    "assessed_tag": "v0.1.1",
+    "base_commit": "8372d4a58becafa9e7d1e5263c7f064b42da9026",
+    "history_scope": "Only this verified tag/snapshot is assessed; no first-affected, release-range or upstream-fixed-version claim",
+    "fix_status": "Application fix supplied as a case-study patch; not submitted or merged upstream"
+  },
+  "method": {
+    "approach": "AI-assisted source review and bounded local tests",
+    "http": "Actual FastAPI backend, application nodes, LangGraph, saver and disk SQLite; deterministic local model endpoint; loopback-only temporary data",
+    "unit": "Actual application workflow and graph/saver/SQLite with deterministic node substitutes; controlled iterator for cleanup-order test",
+    "not_tested": [
+      "public/production access",
+      "attacker or cross-user boundary",
+      "resource exhaustion or service outage",
+      "real model behavior",
+      "full UI/upstream suite",
+      "full ASGI disconnect and repeated cancellation"
+    ]
+  },
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "langgraph": "0.6.7",
+    "aiosqlite": "0.21.0",
+    "checkpoint_sqlite": "2.0.11",
+    "fastapi": "0.116.2",
+    "uvicorn": "0.36.0",
+    "note": "Central pins match application lock; not a full project/transitive lock installation"
+  },
+  "before_single_http": {
+    "requests": 1,
+    "status": 200,
+    "normal_final_response": true,
+    "active_request_tasks": 0,
+    "app_close_calls": 0,
+    "native_sql_usable": true,
+    "worker_alive": true
+  },
+  "unfixed_sequential_control": {
+    "requests": 2,
+    "both_normal_responses": true,
+    "first_retained_before_next": true,
+    "retained_connection_counts": [
+      1,
+      2
+    ],
+    "retained_sqlite_worker_counts": [
+      1,
+      2
+    ],
+    "in_transactions": [
+      false,
+      false
+    ],
+    "http_connections_after_client_closed": 0,
+    "conclusion": "No immediate failure of one next ordinary request observed; not a capacity or long-term availability result"
+  },
+  "regression": {
+    "total": 9,
+    "before": {
+      "passed": 1,
+      "failed": 8,
+      "errors": 0,
+      "exit_code": 1
+    },
+    "after_identical_tests": {
+      "passed": 9,
+      "failed": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "after_formatting": {
+      "passed": 9,
+      "failed": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "identical_test_bytes_before_first_green": true,
+    "source_sha256_before": "dd7729dc07d199ab32789d7dcc91456490c21f56d56f2d35de172545399ea58a",
+    "source_sha256_after": "9dc51153e6d28ca95facf06b9d09f25fc311f394de7f1bdd46cab21b0765f25f",
+    "test_sha256_final": "278e7d694ead3ce57b626b2f7541f5f878af1539bc568d62fef508d6e57a206e",
+    "cases": [
+      {
+        "name": "test_builder_error_does_not_allocate_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_cancellation_releases_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_compile_error_releases_allocated_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_explicit_stream_close_releases_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_inner_stream_closes_before_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_interrupt_can_resume_after_connection_is_closed",
+        "result": "passed"
+      },
+      {
+        "name": "test_node_error_releases_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_normal_completion_releases_connection",
+        "result": "passed"
+      },
+      {
+        "name": "test_response_iterator_close_closes_workflow",
+        "result": "passed"
+      }
+    ]
+  },
+  "after_single_http": {
+    "requests": 1,
+    "status": 200,
+    "normal_final_response": true,
+    "app_close_counts_before_fixture_cleanup": [
+      1
+    ],
+    "native_connection_present": false,
+    "native_sql_usable": false,
+    "worker_alive": false,
+    "release_assertion": true,
+    "fixture_forced_closes": 0,
+    "all_workers_stopped": true,
+    "servers_stopped": true,
+    "test_data_removed": true,
+    "non_fixture_network_attempts": 0
+  },
+  "static_checks": {
+    "ruff_version": "0.11.13",
+    "check_exit": 0,
+    "format_exit": 0,
+    "diff_check_exit": 0
+  },
+  "assessment": {
+    "confirmed": "Application resource-lifecycle defect and local fix in covered scenarios",
+    "conditional_risk": "Potential availability degradation if retained resources become operationally significant under a reachable deployment",
+    "not_established": [
+      "exploitable DoS",
+      "Critical/High severity",
+      "data disclosure",
+      "LangGraph library vulnerability"
+    ]
+  }
+}

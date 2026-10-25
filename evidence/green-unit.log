@@ -1,0 +1,14 @@
+test_builder_error_does_not_allocate_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_builder_error_does_not_allocate_connection) ... ok
+test_cancellation_releases_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_cancellation_releases_connection) ... ok
+test_compile_error_releases_allocated_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_compile_error_releases_allocated_connection) ... ok
+test_explicit_stream_close_releases_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_explicit_stream_close_releases_connection) ... ok
+test_inner_stream_closes_before_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_inner_stream_closes_before_connection) ... ok
+test_interrupt_can_resume_after_connection_is_closed (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_interrupt_can_resume_after_connection_is_closed) ... ok
+test_node_error_releases_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_node_error_releases_connection) ... ok
+test_normal_completion_releases_connection (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_normal_completion_releases_connection) ... ok
+test_response_iterator_close_closes_workflow (test_ai_tutor_connection_lifecycle.ConnectionLifecycleTests.test_response_iterator_close_closes_workflow) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.886s
+
+OK
