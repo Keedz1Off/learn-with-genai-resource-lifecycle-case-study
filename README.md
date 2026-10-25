@@ -2,6 +2,8 @@
 
 Classification: confirmed application bug with potential availability impact; not a confirmed security vulnerability.
 
+[Upstream bug report](https://github.com/vandenn/learn-with-genai/issues/19) · [Local patch and tests](changes.patch)
+
 ## Executive Summary
 
 Two sequential ordinary chats in Learn with GenAI returned HTTP 200 and final responses while leaving two SQLite connections and their worker threads alive.
@@ -14,7 +16,11 @@ We used AI-assisted source review and local verification against repository tag 
 
 Verification used the real application, nodes, LangGraph 0.6.7, saver, and aiosqlite 0.21.0 with a deterministic local model endpoint. Services ran on loopback with temporary data and a dummy key; external connections were blocked.
 
-## Vulnerability Details
+Expected flow: chat request → open SQLite checkpoint connection → run LangGraph and stream the answer → close the workflow iterator → close the database connection and stop its worker.
+
+Observed before the patch: the answer and HTTP request finished, but the database connection and its worker remained alive. An open connection means retained process resources; it does not by itself make the database publicly accessible.
+
+## Observed application bug
 
 This is a lifecycle bug in `backend/src/logic/ai_tutor/graphs/main.py`, function `stream_ai_tutor_workflow`: it opens a connection, passes it to `AsyncSqliteSaver`, and yields events without closing it. The HTTP wrapper also lacked explicit closure of its workflow iterator.
 
@@ -22,13 +28,13 @@ See the [assessed source](https://github.com/vandenn/learn-with-genai/blob/8372d
 
 After request completion, ASGI task exit, and garbage collection, weak-only observation showed zero application close calls: native SQL remained usable and the worker remained alive.
 
-## Exploitability Analysis
+## Impact and limits
 
 The evidence establishes retained resources and **potential availability impact, not a confirmed exploit**. Two chats increased live connection and worker counts from one to two.
 
 Both connections were outside transactions, and the second request completed normally. No exhaustion, service outage, data disclosure, attacker access, or protected cross-user boundary violation was demonstrated. Deployment limits and long-term impact remain unestablished. No Critical/High severity is claimed.
 
-## Proof of Concept
+## Local validation
 
 This is bounded functional validation, not an exploit. See [measured observations](evidence/observations.json), [before-fix results](evidence/red-unit.log), and [after-fix results](evidence/green-unit.log).
 
