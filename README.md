@@ -4,6 +4,25 @@ Classification: confirmed application bug with potential availability impact; no
 
 [Upstream bug report](https://github.com/vandenn/learn-with-genai/issues/19) · [Local patch and tests](changes.patch)
 
+## Start here
+
+```mermaid
+flowchart LR
+    H["HTTP chat request"] --> W["Workflow iterator"]
+    W --> G["LangGraph + SQLite checkpoint saver"]
+    G --> S["Streamed response"]
+    S --> E["Request finishes"]
+    G --> R["Baseline: connection and worker retained"]
+    E --> F["Local fix: close iterator, then connection"]
+```
+
+This is a simplified **application lifecycle** diagram. The retained resources were observed after request completion; they were not shown to make the database publicly accessible.
+
+1. [Architecture, ownership and cleanup flow](FLOW.md)
+2. [Reading guide and file map](READING-GUIDE.md)
+3. [Local patch and regression tests](changes.patch)
+4. [Measured observations](evidence/observations.json) · [before](evidence/red-unit.log) · [after](evidence/green-unit.log)
+
 ## Executive Summary
 
 Two sequential ordinary chats in Learn with GenAI returned HTTP 200 and final responses while leaving two SQLite connections and their worker threads alive.
