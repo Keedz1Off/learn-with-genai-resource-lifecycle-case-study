@@ -1,0 +1,21 @@
+{
+  "format": "matrix-first portfolio package",
+  "date": "2026-11-02",
+  "scope": "Documentation reorganisation; no new target tests",
+  "evidence_snapshot": "59ea74ee36db31da912d2afbe49af924fcb83cdc",
+  "matrix_count": 2,
+  "files": {
+    "matrices/WORKFLOW-LIFECYCLE.json": {
+      "bytes": 13866,
+      "sha256": "f5607ce50e4035fa4d70d6dd3d80722c06da55596440e1f40c8649eb8bdf2f21"
+    },
+    "matrices/HTTP-LIFECYCLE.json": {
+      "bytes": 4160,
+      "sha256": "a1e505e04146d115e6dac50f4ff1dbfda018e158c56cbe03824e705d8543439a"
+    },
+    "README.md": {
+      "bytes": 1737,
+      "sha256": "1f96982a6d2e54d4656c21fa5601cbd9ec1160d2a656a9d4bed964c120d294c1"
+    }
+  }
+}

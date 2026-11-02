@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "HTTP-LIFECYCLE",
+  "title": "HTTP completion and retained resources",
+  "project": "Learn with GenAI application",
+  "scope": "Learn with GenAI v0.1.1, 8372d4a; local deterministic model.",
+  "evidence_state": "Retained historical results and source analysis; per-row status and limits apply.",
+  "source_pins": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json#/source",
+  "evidence_snapshot": {
+    "commit": "59ea74ee36db31da912d2afbe49af924fcb83cdc",
+    "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc"
+  },
+  "interpretation": "This matrix indexes existing evidence. Rows are not additional tests, and no structural or security closure is inferred from a PASS count.",
+  "rows": [
+    {
+      "id": "LG-HTTP",
+      "boundary": "HTTP completion -> SQLite connection / worker lifetime",
+      "invariant": "Finishing the chat must release resources owned by its workflow.",
+      "scenario": "Actual local HTTP chat using a deterministic model; original and patched application.",
+      "oracle": "Normal final response plus application close count, native connection usability and worker liveness.",
+      "observed": {
+        "original": {
+          "requests": 1,
+          "status": 200,
+          "normal_final_response": true,
+          "active_request_tasks": 0,
+          "app_close_calls": 0,
+          "native_sql_usable": true,
+          "worker_alive": true
+        },
+        "local_patch": {
+          "requests": 1,
+          "status": 200,
+          "normal_final_response": true,
+          "app_close_counts_before_fixture_cleanup": [
+            1
+          ],
+          "native_connection_present": false,
+          "native_sql_usable": false,
+          "worker_alive": false,
+          "release_assertion": true,
+          "fixture_forced_closes": 0,
+          "all_workers_stopped": true,
+          "servers_stopped": true,
+          "test_data_removed": true,
+          "non_fixture_network_attempts": 0
+        }
+      },
+      "status": "application_lifecycle_bug_local_fix_verified",
+      "evidence": [
+        {
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
+          "pointer": "/before_single_http"
+        },
+        {
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
+          "pointer": "/after_single_http"
+        }
+      ],
+      "limits": "No real-model, public-deployment or attacker-controlled availability test."
+    },
+    {
+      "id": "LG-NEXT-REQUEST",
+      "boundary": "Retained resources -> next ordinary request",
+      "invariant": "The next ordinary request should still complete in this bounded control.",
+      "scenario": "Two sequential ordinary chats without load.",
+      "oracle": "Normal responses, connection/worker counts and transaction state.",
+      "observed": {
+        "requests": 2,
+        "both_normal_responses": true,
+        "first_retained_before_next": true,
+        "retained_connection_counts": [
+          1,
+          2
+        ],
+        "retained_sqlite_worker_counts": [
+          1,
+          2
+        ],
+        "in_transactions": [
+          false,
+          false
+        ],
+        "http_connections_after_client_closed": 0,
+        "conclusion": "No immediate failure of one next ordinary request observed; not a capacity or long-term availability result"
+      },
+      "status": "next_request_succeeded_resource_retention_observed",
+      "evidence": [
+        {
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
+          "pointer": "/unfixed_sequential_control"
+        }
+      ],
+      "limits": "The count grew to two; no exhaustion threshold or outage was established."
+    }
+  ]
+}

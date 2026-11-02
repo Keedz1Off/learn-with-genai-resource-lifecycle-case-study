@@ -1,11 +1,16 @@
 {
   "schema_version": 1,
-  "prepared_on": "2026-11-02",
-  "scope": "Index of retained historical evidence and source review; no new target execution.",
-  "interpretation": "Each row is an indexed scenario, not an additional test or claim of complete coverage. Status describes the evidence within its stated limits.",
-  "path_base": "repository_root",
+  "id": "WORKFLOW-LIFECYCLE",
+  "title": "Iterator and connection lifecycle",
   "project": "Learn with GenAI application",
-  "source_pins": "evidence/observations.json#/source",
+  "scope": "Learn with GenAI v0.1.1, 8372d4a; local deterministic model.",
+  "evidence_state": "Retained historical results and source analysis; per-row status and limits apply.",
+  "source_pins": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json#/source",
+  "evidence_snapshot": {
+    "commit": "59ea74ee36db31da912d2afbe49af924fcb83cdc",
+    "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc"
+  },
+  "interpretation": "This matrix indexes existing evidence. Rows are not additional tests, and no structural or security closure is inferred from a PASS count.",
   "rows": [
     {
       "id": "LG-REG-01",
@@ -20,17 +25,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/0"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -48,17 +53,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/1"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -76,17 +81,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/2"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -104,17 +109,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/3"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -132,17 +137,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/4"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -160,17 +165,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/5"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -188,17 +193,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/6"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -216,17 +221,17 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/7"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
@@ -244,101 +249,20 @@
       "status": "historical_before_after",
       "evidence": [
         {
-          "file": "evidence/red-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/red-unit.log"
         },
         {
-          "file": "evidence/green-unit.log"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/green-unit.log"
         },
         {
-          "file": "evidence/observations.json",
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/evidence/observations.json",
           "pointer": "/regression/cases/8"
         },
         {
-          "file": "changes.patch"
+          "url": "https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch"
         }
       ],
       "limits": "Bounded local fixture; individual results do not establish all ASGI disconnect or repeated-cancellation behavior."
-    },
-    {
-      "id": "LG-HTTP",
-      "boundary": "HTTP completion -> SQLite connection / worker lifetime",
-      "invariant": "Finishing the chat must release resources owned by its workflow.",
-      "scenario": "Actual local HTTP chat using a deterministic model; original and patched application.",
-      "oracle": "Normal final response plus application close count, native connection usability and worker liveness.",
-      "observed": {
-        "original": {
-          "requests": 1,
-          "status": 200,
-          "normal_final_response": true,
-          "active_request_tasks": 0,
-          "app_close_calls": 0,
-          "native_sql_usable": true,
-          "worker_alive": true
-        },
-        "local_patch": {
-          "requests": 1,
-          "status": 200,
-          "normal_final_response": true,
-          "app_close_counts_before_fixture_cleanup": [
-            1
-          ],
-          "native_connection_present": false,
-          "native_sql_usable": false,
-          "worker_alive": false,
-          "release_assertion": true,
-          "fixture_forced_closes": 0,
-          "all_workers_stopped": true,
-          "servers_stopped": true,
-          "test_data_removed": true,
-          "non_fixture_network_attempts": 0
-        }
-      },
-      "status": "application_lifecycle_bug_local_fix_verified",
-      "evidence": [
-        {
-          "file": "evidence/observations.json",
-          "pointer": "/before_single_http"
-        },
-        {
-          "file": "evidence/observations.json",
-          "pointer": "/after_single_http"
-        }
-      ],
-      "limits": "No real-model, public-deployment or attacker-controlled availability test."
-    },
-    {
-      "id": "LG-NEXT-REQUEST",
-      "boundary": "Retained resources -> next ordinary request",
-      "invariant": "The next ordinary request should still complete in this bounded control.",
-      "scenario": "Two sequential ordinary chats without load.",
-      "oracle": "Normal responses, connection/worker counts and transaction state.",
-      "observed": {
-        "requests": 2,
-        "both_normal_responses": true,
-        "first_retained_before_next": true,
-        "retained_connection_counts": [
-          1,
-          2
-        ],
-        "retained_sqlite_worker_counts": [
-          1,
-          2
-        ],
-        "in_transactions": [
-          false,
-          false
-        ],
-        "http_connections_after_client_closed": 0,
-        "conclusion": "No immediate failure of one next ordinary request observed; not a capacity or long-term availability result"
-      },
-      "status": "next_request_succeeded_resource_retention_observed",
-      "evidence": [
-        {
-          "file": "evidence/observations.json",
-          "pointer": "/unfixed_sequential_control"
-        }
-      ],
-      "limits": "The count grew to two; no exhaustion threshold or outage was established."
     }
   ]
 }

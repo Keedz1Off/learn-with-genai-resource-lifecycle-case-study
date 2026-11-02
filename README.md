@@ -11,10 +11,17 @@ The chat endpoint runs a LangGraph workflow with SQLite checkpoints.
 
 This is an application bug, not a demonstrated LangGraph library vulnerability.
 
-## Evidence and details
+**Flow:** HTTP chat → workflow → SQLite checkpoint connection → response and cleanup.
 
-[Boundary matrix](matrices/boundaries.json) · [Flow](FLOW.md) · [Patch and tests](changes.patch) · [Before log](evidence/red-unit.log) · [After log](evidence/green-unit.log) · [Measurements](evidence/observations.json)
+## Matrices
 
-Assessed: `vandenn/learn-with-genai` v0.1.1, `8372d4a`; AI-assisted local testing with a deterministic model. [Technical details](CASE-STUDY.md) · [File map](READING-GUIDE.md) · [Upstream report](https://github.com/vandenn/learn-with-genai/issues/19).
+| Boundary | JSON |
+| --- | --- |
+| Iterator and connection lifecycle | [WORKFLOW-LIFECYCLE](matrices/WORKFLOW-LIFECYCLE.json) |
+| HTTP completion and retained resources | [HTTP-LIFECYCLE](matrices/HTTP-LIFECYCLE.json) |
 
-Historical results; no new target execution in this documentation edit.
+Read each row as: **invariant → scenario → oracle → observation → status → evidence → limit**.
+
+[Detailed report, tests, logs and source pins](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc) are preserved in the pinned evidence snapshot. Matrix links open the exact supporting records.
+
+Learn with GenAI v0.1.1, 8372d4a; local deterministic model. Independent, AI-assisted work. Documentation reorganisation only; no new target tests. [File inventory](package-manifest.json).
