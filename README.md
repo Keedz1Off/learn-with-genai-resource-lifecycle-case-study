@@ -24,17 +24,24 @@ flowchart LR
 
 ## How to read
 
+The summary and flow above explain the main result. Expand **Technical details** to inspect test cases, supporting records and exact versions.
+
+<details>
+<summary>Technical details: matrices and evidence</summary>
+
 1. Read the summary and flow for resource ownership and the local cleanup fix.
 2. Open [HTTP-LIFECYCLE](matrices/HTTP-LIFECYCLE.json): `LG-HTTP` compares before/after; `LG-NEXT-REQUEST` checks the next ordinary request. Use [WORKFLOW-LIFECYCLE](matrices/WORKFLOW-LIFECYCLE.json) for iterator cases.
 3. Compare `invariant` (required rule), `oracle` (measurement) and `observed` (result). Follow `evidence[].url` and its optional JSON `pointer`. Read `status` with `limits`; retained resources alone do not prove an outage.
 
-## Matrices
+### Matrices
 
 | Boundary | JSON |
 | --- | --- |
 | Iterator and connection lifecycle | [WORKFLOW-LIFECYCLE](matrices/WORKFLOW-LIFECYCLE.json) |
 | HTTP completion and retained resources | [HTTP-LIFECYCLE](matrices/HTTP-LIFECYCLE.json) |
 
-[Detailed report, tests, logs and source pins](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc) are preserved in the pinned evidence snapshot. Matrix links open the exact supporting records.
+[Evidence archive: detailed report, tests, logs and source pins](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc) are preserved in the pinned evidence snapshot. Matrix links open the exact supporting records.
 
 Learn with GenAI v0.1.1, 8372d4a; local deterministic model. Independent, AI-assisted work. Documentation reorganisation only; no new target tests. [File inventory](package-manifest.json).
+
+</details>
