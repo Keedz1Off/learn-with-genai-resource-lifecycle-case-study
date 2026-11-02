@@ -11,7 +11,22 @@ The chat endpoint runs a LangGraph workflow with SQLite checkpoints.
 
 This is an application bug, not a demonstrated LangGraph library vulnerability.
 
-**Flow:** HTTP chat → workflow → SQLite checkpoint connection → response and cleanup.
+## Flow
+
+```mermaid
+flowchart LR
+    R["HTTP chat request"] --> C["Application opens SQLite connection"]
+    C --> W["LangGraph workflow produces response"]
+    W --> D["HTTP chat completes"]
+    D --> O["Original app: connection and worker retained"]
+    D --> F["Local patch: iterators and connection closed"]
+```
+
+## How to read
+
+1. Read the summary and flow for resource ownership and the local cleanup fix.
+2. Open [HTTP-LIFECYCLE](matrices/HTTP-LIFECYCLE.json): `LG-HTTP` compares before/after; `LG-NEXT-REQUEST` checks the next ordinary request. Use [WORKFLOW-LIFECYCLE](matrices/WORKFLOW-LIFECYCLE.json) for iterator cases.
+3. Compare `invariant` (required rule), `oracle` (measurement) and `observed` (result). Follow `evidence[].url` and its optional JSON `pointer`. Read `status` with `limits`; retained resources alone do not prove an outage.
 
 ## Matrices
 
@@ -19,8 +34,6 @@ This is an application bug, not a demonstrated LangGraph library vulnerability.
 | --- | --- |
 | Iterator and connection lifecycle | [WORKFLOW-LIFECYCLE](matrices/WORKFLOW-LIFECYCLE.json) |
 | HTTP completion and retained resources | [HTTP-LIFECYCLE](matrices/HTTP-LIFECYCLE.json) |
-
-Read each row as: **invariant → scenario → oracle → observation → status → evidence → limit**.
 
 [Detailed report, tests, logs and source pins](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc) are preserved in the pinned evidence snapshot. Matrix links open the exact supporting records.
 
