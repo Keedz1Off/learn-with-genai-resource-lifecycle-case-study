@@ -11,6 +11,20 @@ The chat endpoint runs a LangGraph workflow with SQLite checkpoints.
 
 This is an application bug, not a demonstrated LangGraph library vulnerability.
 
+## Boundaries, tests and evidence
+
+Open the [boundary index](matrices/boundaries.json), [nine original lifecycle tests](regression/test_ai_tutor_connection_lifecycle.py) and [recorded results](evidence/observations.json). The original test source matches the checksum from the recorded run. The [before log](evidence/red-unit.log) and [after log](evidence/green-unit.log) show the individual outcomes.
+
+To run the original suite, use the pinned upstream backend with the [recorded local patch](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/blob/59ea74ee36db31da912d2afbe49af924fcb83cdc/changes.patch) and [recorded dependencies](evidence/requirements.txt). From the patched backend, run `python -m unittest discover -s tests -v` in its configured environment. [Offline Python checks](tests/test_recorded_evidence.py) work directly in this repository.
+
+Run the offline evidence checks from the repository root with Python 3.10 or later.
+
+```sh
+python -B -m unittest discover -s tests -v
+```
+
+These checks read saved files and do not launch the assessed application.
+
 ## Flow
 
 ```mermaid
@@ -40,8 +54,8 @@ Read the summary and flow, then choose a JSON matrix above. Expand **Technical d
 2. Open [HTTP-LIFECYCLE](matrices/HTTP-LIFECYCLE.json): `LG-HTTP` compares before/after; `LG-NEXT-REQUEST` checks the next ordinary request. Use [WORKFLOW-LIFECYCLE](matrices/WORKFLOW-LIFECYCLE.json) for iterator cases.
 3. Compare `invariant` (required rule), `oracle` (measurement) and `observed` (result). Follow `evidence[].url` and its optional JSON `pointer`. Read `status` with `limits`; retained resources alone do not prove an outage.
 
-[Evidence archive: detailed report, tests, logs and source pins](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc) are preserved in the pinned evidence snapshot. Matrix links open the exact supporting records.
+[Evidence archive: detailed report and recorded results](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/tree/59ea74ee36db31da912d2afbe49af924fcb83cdc) are preserved in the pinned evidence snapshot. Matrix links open the exact supporting records.
 
-Learn with GenAI v0.1.1, 8372d4a; local deterministic model. Independent, AI-assisted work. Documentation reorganisation only; no new target tests. [File inventory](package-manifest.json).
+Learn with GenAI v0.1.1, 8372d4a; local deterministic model. Independent, AI-assisted work. [File inventory](package-manifest.json).
 
 </details>

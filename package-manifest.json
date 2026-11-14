@@ -1,21 +1,58 @@
 {
   "format": "matrix-first portfolio package",
-  "date": "2026-11-02",
-  "scope": "Documentation-only visible JSON matrix index; no new target tests",
+  "date": "2026-11-14",
+  "scope": "Boundary matrices, recorded evidence and offline checks",
   "evidence_snapshot": "59ea74ee36db31da912d2afbe49af924fcb83cdc",
   "matrix_count": 2,
   "files": {
-    "matrices/WORKFLOW-LIFECYCLE.json": {
-      "bytes": 13866,
-      "sha256": "f5607ce50e4035fa4d70d6dd3d80722c06da55596440e1f40c8649eb8bdf2f21"
+    ".gitattributes": {
+      "bytes": 22,
+      "sha256": "8569b60073103e930c53845c8dadee0dad74cbfae1fff9fa7bcb7c8d1ae5f158"
+    },
+    "evidence/green-unit.log": {
+      "bytes": 1523,
+      "sha256": "b74a12749424f639fb301576e60b9ccbc07d906f32c92f3ad01e8887a93b0136"
+    },
+    "evidence/observations.json": {
+      "bytes": 4841,
+      "sha256": "ab0e611f9afc79583dcf7c8cfacba5953f3695958a71415a2e4e485e3571ccba"
+    },
+    "evidence/red-unit.log": {
+      "bytes": 1579,
+      "sha256": "6c2796001ce41f53af56211b171039a5f3063056a1195b6fa34a22efbe039c66"
+    },
+    "evidence/requirements.txt": {
+      "bytes": 1049,
+      "sha256": "918ec6d18c9f63293ab5e806c649486d5f8d96bdc31ca41f346eb70ea07c8046"
+    },
+    "LICENSE-UPSTREAM.txt": {
+      "bytes": 11560,
+      "sha256": "47b2b7375318c574ef44d0def1e28d296e8bac5940d24d2694f5d99e7053b780"
+    },
+    "matrices/boundaries.json": {
+      "bytes": 16817,
+      "sha256": "121405b99f92f1656d0abfc703b6df7227e3612d68b3f2953087a23e968fcafa"
     },
     "matrices/HTTP-LIFECYCLE.json": {
-      "bytes": 4160,
-      "sha256": "a1e505e04146d115e6dac50f4ff1dbfda018e158c56cbe03824e705d8543439a"
+      "bytes": 4257,
+      "sha256": "9ae6d80b3d2cfa73a1c7a6cffdc575566d979b6442ed918492096903b7d06e5b"
+    },
+    "matrices/WORKFLOW-LIFECYCLE.json": {
+      "bytes": 14134,
+      "sha256": "d6e67af69ab3fecd7c4bbe04880765b34d1179fba135f7d412ba18260ccb3065"
     },
     "README.md": {
-      "bytes": 2667,
-      "sha256": "4f57af05e801f26e4540584b560572fbed0c2592dc74981714aa39089e408964"
+      "bytes": 3699,
+      "sha256": "5b229dfc2197658080993d53544caf2219a7b052485c14c79120d15571393b3b"
+    },
+    "regression/test_ai_tutor_connection_lifecycle.py": {
+      "bytes": 9348,
+      "sha256": "278e7d694ead3ce57b626b2f7541f5f878af1539bc568d62fef508d6e57a206e"
+    },
+    "tests/test_recorded_evidence.py": {
+      "bytes": 1198,
+      "sha256": "9c4bcfe5045065ce1c118fd108aa65771ee3348d04026c79468582017aa39437"
     }
-  }
+  },
+  "boundary_index": "matrices/boundaries.json"
 }
