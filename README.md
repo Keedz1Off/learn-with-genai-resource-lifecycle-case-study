@@ -16,6 +16,7 @@ This is an application bug, not a demonstrated LangGraph library vulnerability.
 | Open | What you will find |
 | --- | --- |
 | [Flow](#flow) | Follow a chat response from connection setup to cleanup. |
+| [Testing pipeline](#testing-pipeline) | See how the same lifecycle checks were compared before and after the local fix. |
 | [Original tests](regression/test_ai_tutor_connection_lifecycle.py) | Read the lifecycle checks used in the before-and-after comparison. |
 | [Saved observations](evidence/observations.json) · [Before](evidence/red-unit.log) · [After](evidence/green-unit.log) | Compare the recorded cleanup results before and after the local fix. |
 | [GitHub Actions](#github-actions) | Run checks on the saved evidence and test file checksum. |
@@ -32,9 +33,59 @@ Run the offline evidence checks from the repository root with Python 3.10 or lat
 python -B -m unittest discover -s tests -v
 ```
 
+## Flow
+
+```mermaid
+flowchart LR
+    R["HTTP chat request"] --> C["Application opens SQLite connection"]
+    C --> W["LangGraph workflow produces response"]
+    W --> D["HTTP chat completes"]
+    D --> O["Original app: connection and worker retained"]
+    D --> F["Local patch: iterators and connection closed"]
+```
+
+## Testing pipeline
+
+The original regression suite measured the resources owned by each chat request. The same nine cases were run before and after the local cleanup change.
+
+```mermaid
+flowchart TD
+    Rule["Completed chat releases its owned resources"] --> Matrix["Lifecycle matrix rows"]
+    Matrix --> Cases["Nine original regression cases"]
+    Cases --> Run["Run against the original and locally patched backend"]
+    Run --> Observe["Inspect iterators, connections and worker cleanup"]
+    Observe --> Oracle["Compare resource state with the expected lifecycle"]
+    Oracle --> Logs["Save before and after logs"]
+    Logs --> Verify["Offline checks verify observations and test checksum"]
+```
+
+| Part | Open |
+| --- | --- |
+| Resource ownership rules | [Workflow lifecycle](matrices/WORKFLOW-LIFECYCLE.json) and [HTTP lifecycle](matrices/HTTP-LIFECYCLE.json) |
+| Original runtime assertions | [Nine regression tests](regression/test_ai_tutor_connection_lifecycle.py) |
+| Before and after observations | [Results](evidence/observations.json), [before log](evidence/red-unit.log) and [after log](evidence/green-unit.log) |
+| Current CI assertions | [Offline Python tests](tests/test_recorded_evidence.py) |
+
+Actions verifies the saved observations and regression-source checksum. The original runtime suite uses the pinned backend and setup described above.
+
 ## GitHub Actions
 
 Open [Case study checks](https://github.com/Keedz1Off/learn-with-genai-resource-lifecycle-case-study/actions/workflows/checks.yml) and click **Run workflow**. CI reads the matrix JSON and checks the saved evidence offline. The run saves a `check-results` log. Select **CD demo** to also download `verified-delivery` with the log, commit SHA and checksum after checks pass.
+
+### CI flow
+
+```mermaid
+flowchart TD
+    Trigger["Push, pull request or Run workflow"] --> Setup["Checkout commit and prepare Python"]
+    Setup --> Input["Read matrix JSON"]
+    Input --> Check["Check cleanup records and test checksum"]
+    Check --> Log["Save check-results log"]
+    Check --> Result{"Checks passed?"}
+    Result -->|No| Fail["CI failed"]
+    Result -->|Yes| Pass["CI passed"]
+    Pass -->|"Manual run with CD demo enabled"| Bundle["Archive log, commit and checksum"]
+    Bundle --> Delivery["Save verified-delivery artifact"]
+```
 
 ### What happens in Actions
 
@@ -47,17 +98,6 @@ Open [Case study checks](https://github.com/Keedz1Off/learn-with-genai-resource-
 | CD demo | After a passing manual run, CI saves the log, commit SHA and SHA-256 checksum as `verified-delivery`. |
 
 [See the workflow file](.github/workflows/checks.yml). This job checks the material shipped in this repository offline.
-
-## Flow
-
-```mermaid
-flowchart LR
-    R["HTTP chat request"] --> C["Application opens SQLite connection"]
-    C --> W["LangGraph workflow produces response"]
-    W --> D["HTTP chat completes"]
-    D --> O["Original app: connection and worker retained"]
-    D --> F["Local patch: iterators and connection closed"]
-```
 
 ## JSON matrices
 
